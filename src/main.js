@@ -8,6 +8,17 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/main.css'
 Vue.config.productionTip = false
 Vue.use(ElementUI)
+Vue.directive('document-click', {
+  bind (el, binding, vnode) {
+    document.addEventListener('click', binding.value, false)
+  },
+  inserted () {
+
+  },
+  update () {
+
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
