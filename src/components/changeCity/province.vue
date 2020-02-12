@@ -36,13 +36,13 @@
 </template>
 <script>
 import MSelect from './select.vue'
-// import api from '@/api/index.js'
+import api from '@/api/index.js'
 export default {
   data () {
     return {
-      provinceList: ['山东', '甘肃', '江苏', '北京', '云南', '海南'],
+      provinceList: [],
       province: '省份',
-      cityList: ['南昌', '九江', '景德镇', '萍乡', '新余', '鹰潭', '赣州'],
+      cityList: [],
       city: '城市',
       cityActive: false,
       provinceActive: false,
@@ -55,15 +55,15 @@ export default {
   components: {
     MSelect
   },
-  //   created () {
-  //     api.getProvinceList().then(res => {
-  //       this.provinceList = res.data.data.map((item) => {
-  //         item.name = item.provinceName
-  //         return item
-  //       })
-  //       console.log(this.provinceList)
-  //     })
-  //   },
+  created () {
+    api.getProvinceList().then(res => {
+      this.provinceList = res.data.data.map((item) => {
+        item.name = item.provinceName
+        return item
+      })
+      console.log(this.provinceList)
+    })
+  },
   methods: {
     changeProvinceActive (flag) {
       this.provinceActive = flag

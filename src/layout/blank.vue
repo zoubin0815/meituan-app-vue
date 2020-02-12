@@ -1,6 +1,6 @@
 <template>
-    <div class="page-blank">
-        blank
+    <div>
+      <router-view></router-view>
     </div>
 </template>
 <script>

@@ -10,7 +10,7 @@
 </template>
 <script>
 import Item from './item.vue'
-// import api from '@/api/index.js'
+import api from '@/api/index.js'
 export default {
   data () {
     return {
@@ -40,9 +40,9 @@ export default {
     }
   },
   created () {
-    // api.getProductsList().then(res => {
-    //   this.productList = res.data.data
-    // })
+    api.getProductsList().then(res => {
+      this.productList = res.data.data
+    })
   },
   components: {
     Item

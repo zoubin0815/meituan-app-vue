@@ -25,7 +25,7 @@
       </p>
       <p>
           <span class="s-item-tab">
-              <span v-for="(v, i) in meta.tab" :key="v">{{v + (i <meta.tab.length - 1 ? '|' : '')}}</span>
+              <span v-for="(v, i) in meta.tab" :key="v">{{v + (i < meta.tab.length - 1 ? '|' : '')}}</span>
           </span>
           <span class="s-item-addr">{{meta.address}}</span>
           <span>

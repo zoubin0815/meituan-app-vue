@@ -10,7 +10,7 @@
       >{{item.text}}</dd>
     </dl>
     <ul class="ibody">
-      <li v-for="(item, index) in list" :key="index">
+      <li v-for="(item, index) in resultsData[kind]" :key="index">
         <el-card :body-style="{ padding: '0px' }" shadow="never">
           <img :src="item.image" class="image">
           <div class="cbody">
@@ -19,7 +19,7 @@
             <div class="price-info">
               <span class="current-price-wrapper">
                 <span class="price-symbol numfont">¥</span>
-                <span class="current-price numfont">{{item.price_info.old_price}}</span>
+                <span class="current-price numfont">{{item.price}}</span>
               </span>
                <span class="sold bottom-right-info">{{item.address}}</span>
               <!-- <span class="old-price">门市价¥{{item.price_info.old_price}}</span>
@@ -45,77 +45,21 @@
   </div>
 </template>
 <script>
-// import api from '@/api/index.js'
+import api from '@/api/index.js'
 export default {
   data () {
     return {
-      list: [{
-        image: 'https://p0.meituan.net/bbia/850ce195a4db8d447644429ac6e32c20330100.jpg@460w_260h_1e_1c',
-        title: 'KingLove金乐（好运来蛋糕）',
-        sub_title: '蛋糕29选1',
-        price_info: {
-          current_price: 18,
-          old_price: 36
-        },
-        address: '崇文门'
-      }, {
-        image: 'https://p0.meituan.net/bbia/850ce195a4db8d447644429ac6e32c20330100.jpg@460w_260h_1e_1c',
-        title: 'KingLove金乐（好运来蛋糕）',
-        sub_title: '蛋糕29选1',
-        price_info: {
-          current_price: 18,
-          old_price: 36
-        },
-        address: '崇文门'
-      }, {
-        image: 'https://p0.meituan.net/bbia/850ce195a4db8d447644429ac6e32c20330100.jpg@460w_260h_1e_1c',
-        title: 'KingLove金乐（好运来蛋糕）',
-        sub_title: '蛋糕29选1',
-        price_info: {
-          current_price: 18,
-          old_price: 36
-        },
-        address: '崇文门'
-      }, {
-        image: 'https://p0.meituan.net/bbia/850ce195a4db8d447644429ac6e32c20330100.jpg@460w_260h_1e_1c',
-        title: 'KingLove金乐（好运来蛋糕）',
-        sub_title: '蛋糕29选1',
-        price_info: {
-          current_price: 18,
-          old_price: 36
-        },
-        address: '崇文门'
-      }, {
-        image: 'https://p0.meituan.net/bbia/850ce195a4db8d447644429ac6e32c20330100.jpg@460w_260h_1e_1c',
-        title: 'KingLove金乐（好运来蛋糕）',
-        sub_title: '蛋糕29选1',
-        price_info: {
-          current_price: 18,
-          old_price: 36
-        },
-        address: '崇文门'
-      }, {
-        image: 'https://p0.meituan.net/bbia/850ce195a4db8d447644429ac6e32c20330100.jpg@460w_260h_1e_1c',
-        title: 'KingLove金乐（好运来蛋糕）',
-        sub_title: '蛋糕29选1',
-        price_info: {
-          current_price: 18,
-          old_price: 36
-        },
-        address: '崇文门'
-      }],
-
       kind: 'all',
       resultsData: {}
     }
   },
   props: ['nav'],
-  //   created () {
-  //     api.resultsByKeywords().then((res) => {
-  //       console.log(res)
-  //       this.resultsData = res.data.data
-  //     })
-  //   },
+  created () {
+    api.resultsByKeywords().then((res) => {
+      console.log(res)
+      this.resultsData = res.data.data
+    })
+  },
   methods: {
     over (e) {
       console.log(e.target)
