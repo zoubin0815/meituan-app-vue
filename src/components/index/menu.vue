@@ -17,38 +17,18 @@
     </div>
 </template>
 <script>
+import api from '@/api/index.js'
 export default {
   data () {
     return {
       curDetail: null,
-      menuList: [{
-        title: '美食',
-        icon: 'food',
-        children: [{
-          title: '美食',
-          children: ['代金卷', '甜点饮品', '火锅自助餐', '小吃快餐']
-        }]
-      },
-      {
-        title: '外卖',
-        icon: 'takeout',
-        children: [{
-          title: '外卖',
-          children: ['美团外卖']
-        }]
-      },
-
-      {
-        title: '酒店',
-        icon: 'hotel',
-        children: [{
-          title: '星级酒店',
-          children: ['经典型', '舒适/三星', '高档/四星', '豪华/五星']
-        }]
-      }
-
-      ]
+      menuList: []
     }
+  },
+  created () {
+    api.getMenuList().then(res => {
+      this.menuList = res.data.data
+    })
   },
   methods: {
     menuEnter (item) {
